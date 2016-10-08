@@ -24,6 +24,12 @@
 		}
 	}
 
+	// 書き直し
+	if ($_REQUEST['action'] == 'rewrite') {
+		
+		$_POST = $_SESSION['sign_up'];
+		$_error['rewrite'] == true;
+	}
 
 ?>
 
