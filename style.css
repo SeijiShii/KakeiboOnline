@@ -1,0 +1,90 @@
+@import url(http://fonts.googleapis.com/earlyaccess/notosansjp.css);
+
+body {
+	background: #C9DAEA;
+	width : 100%;
+	margin: -10px;
+	font-family: 'Noto Sans JP', sans-serif;
+	font-size: 100%;
+}
+
+.main_column {
+	position: absolute;
+	background-color: #03F7EB;
+	width: 800px;
+	height: 100%;
+	left: 0;
+	right: 0;
+	margin: auto;
+	text-align: center;
+	float: none;
+}
+
+#app_title {
+	color: white;
+	border-bottom: 10px solid #F9D1E5;
+	height: 30px;
+	
+}
+
+.sub_title {
+	
+}
+
+.form_column{
+	width: 300px;
+	margin: auto;
+}
+
+dt{
+	height: 20px;
+	margin-top: 10px;
+	text-align: left;
+}
+
+dd {
+	margin-left: 0px;
+}
+
+.text_box{
+	border: solid gray 0.5px;
+	height: 20px;
+	width: 100%;
+}
+
+.right_button_wrapper{
+	text-align: right;
+}
+
+.button {
+	height: 40px;
+	background-color: #DD8585;
+	color: white;
+	width: 100px;
+	border: none;
+	font-weight: bold;
+    font-size: 13px;
+	font-family: sans-serif;
+	float: right;
+
+}
+
+.link_button {
+	color: white;
+	text-align: center;
+	display: block;
+	text-decoration: none;
+	line-height: 40px;
+	width: 100px;
+	margin-left: auto;
+
+}
+
+.footer {
+	float: none;
+}
+
+.error {
+	color: red;
+	font-size: 10px;
+}
