@@ -18,8 +18,8 @@
 		}
 		
 		if (empty($error)) {
-			$_SESSION['join'] = $_POST;
-			header('Location: check_account.php');
+			$_SESSION['sign_up'] = $_POST;
+			header('Location: ../check_account/check_account.php');
 			exit();
 		}
 	}
@@ -45,7 +45,7 @@
 				<dl>
 					<dt>ユーザ名</dt>
 					<dd>
-						<input class='text_box' type = 'text' name = "user_name" value = "<?php echo htmlspecialchars($_POST['name'], ENT_QUOTES, 'UTF-8') ?>"/>
+						<input class='text_box' type = 'text' name = "name" value = "<?php echo htmlspecialchars($_POST['name'], ENT_QUOTES, 'UTF-8') ?>"/>
 						<?php if ($error['name'] == 'blank'): ?>
 						<p class = 'error'>* ユーザ名を入力してください。</p>
 						<?php endif; ?>
