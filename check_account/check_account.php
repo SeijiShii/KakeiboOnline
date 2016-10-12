@@ -2,10 +2,27 @@
 
 <?php 
     session_start();
+    require('../php_function/dbconnect.php');
     
     if (!isset($_SESSION['sign_up'])) {
         header('Location: index.php');
         exit();
+    }
+    
+    if (!empty($_POST)) {
+    	// 登録処理をする
+    	$sql = sprintf("INSERT INTO member SET name = '%s', password = '%s'",
+    		mysqli_real_escape_string($db, $_SESSION['sign_up']['name']),
+    		mysqli_real_escape_string($db, sha1($_SESSION['sign_up']['password']))
+    	);
+    	
+    	mysqli_query($db, $sql) 
+    		or die(mysqli_error($db));
+    	unset($_SESSION['sign_up']);
+    	
+    	header('Location: ../welcome/welcome.php');
+    	exit();
+    	
     }
 ?>
 
@@ -24,6 +41,7 @@
 			<h2>登録内容確認</h2>
 			
 			<form action = "" method = "post" enctype = "multipart/form-data" class = 'form_column'>
+				<input type="hidden" name="action" value="submit"/>
 				<table>
 					<tr>
 						<td>ユーザ名</td>
