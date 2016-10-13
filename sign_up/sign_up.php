@@ -3,6 +3,8 @@
 <?php
 	session_start();
 	
+	require('../php_function/dbconnect.php');
+	
 	if (!empty($_POST)) {
 		// エラー項目の確認
 		if ($_POST['name'] == '') {
@@ -17,11 +19,27 @@
 			$error['password'] = 'blank';
 		}
 		
+		// 重複アカウント確認　DB内に同じ名前のアカウントがあるか
 		if (empty($error)) {
-			$_SESSION['sign_up'] = $_POST;
-			header('Location: ../check_account/check_account.php');
-			exit();
-		}
+			
+			$sql = sprintf("SELECT COUNT(*) AS cnt FROM members WHERE name = '%s'",
+				mysqli_real_escape_string($db, $_POST['name'])
+			);
+			
+			$record = mysqli_query($db, $sql) or die(mysqli_error($db));
+			$table = mysqli_fetch_assoc($record);
+			
+			if ($table['cnt'] > 0) {
+				$error['name'] = 'duplicate';
+			}
+			
+			if (empty($error)) {
+				$_SESSION['sign_up'] = $_POST;
+				header('Location: ../check_account/check_account.php');
+				exit();
+			}
+		
+	
 	}
 
 	// 書き直し
@@ -29,6 +47,10 @@
 		
 		$_POST = $_SESSION['sign_up'];
 		$_error['rewrite'] == true;
+	}
+
+
+		
 	}
 
 ?>
@@ -54,6 +76,9 @@
 						<input class='text_box' type = 'text' name = "name" value = "<?php echo htmlspecialchars($_POST['name'], ENT_QUOTES, 'UTF-8') ?>"/>
 						<?php if ($error['name'] == 'blank'): ?>
 						<p class = 'error'>* ユーザ名を入力してください。</p>
+						<?php endif; ?>
+						<?php if($error['name'] == 'duplicate'): ?>
+						<p class= 'error'>* 指定された指定されたユーザ名は既に登録されています。</p>
 						<?php endif; ?>
 					</dd>
 					<dt>パスワード</dt>

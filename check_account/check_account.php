@@ -11,7 +11,7 @@
     
     if (!empty($_POST)) {
     	// 登録処理をする
-    	$sql = sprintf("INSERT INTO member SET name = '%s', password = '%s'",
+    	$sql = sprintf("INSERT INTO members SET name = '%s', password = '%s'",
     		mysqli_real_escape_string($db, $_SESSION['sign_up']['name']),
     		mysqli_real_escape_string($db, sha1($_SESSION['sign_up']['password']))
     	);
