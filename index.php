@@ -1,6 +1,7 @@
-<!DOCTYPE html>
-
 <?php
+	require('php_function/dbconnect.php');
+	session_start();
+
 	if (isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()) {
 		// ログインしている
 		// idがセッションに記録されている
@@ -8,12 +9,11 @@
 		
 	} else {
 		// ログインしていない
-		header('Location: log_in/index.php');
+		header('Location: log_in.php');
 		exit();
 	}
-
 ?>
-
+<!DOCTYPE html>
 <html>
 	<head>
 		<link rel = 'stylesheet' href = 'style.css' type = 'text/css'>
@@ -26,6 +26,8 @@
 			<div id = 'app_title'>
 				<h1>家計簿オンライン</h1>
 			</div>
+
+			<p>ログインしました</p>
 
 			<div class = 'footer' >
 				<p><small>&copy; 2016 c-kogyo.net</small></p>				

@@ -35,7 +35,7 @@
 			
 			if (empty($error)) {
 				$_SESSION['sign_up'] = $_POST;
-				header('Location: ../check_account/check_account.php');
+				header('Location: check_account.php');
 				exit();
 			}
 		
@@ -98,9 +98,6 @@
 
 			</form>
 		
-			<br>
-			<br>
-			<br>
 			<div class = 'footer'>
 				<p>このアプリにはソーシャル機能はないためユーザ名等が公開されることはありません。</p>
 				<p><small>&copy; 2016 c-kogyo.net</small></p>				

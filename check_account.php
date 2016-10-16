@@ -2,12 +2,9 @@
 
 <?php 
     session_start();
-    require('../php_function/dbconnect.php');
+    require('php_function/dbconnect.php');
     
-    if (!isset($_SESSION['sign_up'])) {
-        header('Location: index.php');
-        exit();
-    }
+   
     
     if (!empty($_POST)) {
     	// 登録処理をする

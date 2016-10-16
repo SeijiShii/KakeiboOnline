@@ -1,11 +1,3 @@
-// <?php
-//     $db =  
-//     mysqli_connect('localhost', 'root', '', 'kakeibo_db') 
-//         or die(mysqli_connect_error());
-//     mysqli_set_charset($db, 'utf8');
-    
-// ?>
-
 <?php
 	    // A simple PHP script demonstrating how to connect to MySQL.
 	    // Press the 'Run' button on the top to start the web server,
@@ -35,5 +27,4 @@
 	    function mysql_connect_errror() {
 	    	echo("Connection failed: ". $db->connect_error);
 	    }
-
 ?>
